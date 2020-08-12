@@ -83,7 +83,7 @@ router.post('/', (req, res) => {
     price: req.body.price,
     stock: req.body.stock,
     category_id: req.body.category_id,
-    tag_ids: req.body.tag_ids
+    tagIds: req.body.tag_Ids
   })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
@@ -96,8 +96,8 @@ router.post('/', (req, res) => {
         });
         return ProductTag.bulkCreate(productTagIdArr);
       }
-      // if no product tags, just respond
-      res.status(200).json(product);
+      else {
+      return res.status(200).json(product); }
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
@@ -115,7 +115,7 @@ router.put('/:id', (req, res) => {
       price: req.body.price,
       stock: req.body.stock,
       category_id: req.body.category_id,
-      tag_ids: req.body.tag_ids
+      tag_Ids: req.body.tag_Ids
     },
     {
     where: {
