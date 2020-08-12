@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
-  Post.update(
+  Tag.update(
     {
       tag_name: req.body.tag_name
     },
